@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ş̶͙̼͝u̷̢̡̩̹͈̲̰̬̘͖̠͕̱̲͙͒́̇̔̄̓̍̓̚r̴͈̆̃̊v̸̠̖̹͎̀̇̅́̈̐͗̃̈͐̋̓͝ͅḯ̵̡͇͓̺̺̟͎͎̦̘͍͓͋̀͒͒̌̔͋̓̕̚͜͝ͅv̵̨̨̨̛̛̼̺̲͇̬̱͚̰̔͂̋̂̋̒̃̋̽͘͝ơ̶̟̘͓̰̖̏͛̀̈́͠ͅr̶͉̦͚̟̘͇̫̱̀͌̀̃</title>
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    
+    <style>
+        body {
+            margin: 0;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100%;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            height: 600px; 
+            margin: 0 auto;
+        }
+
+        .image-container img {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 100px;
+            max-width: 2000px;
+            height: auto;
+        }
+
+        .cloud {
+            top: -135px;
+            animation: moveCloud 20s linear infinite;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: -300px auto; 
+        }
+
+        iframe.texty {
+            width: 100%;
+            height: 2300px; 
+            border: none;
+        }
+
+        @keyframes moveCloud {
+            0% {
+                transform: translateX(-75%);
+            }
+            100% {
+                transform: translateX(-25%);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <img src="images/bg10.png" alt="Image 1" class="image1">
+        <img class="cloud" src="images/smoke3.png">
+        <img src="images/newdan.png" alt="Image 2" class="image2" id="newdan">
+        <img src="images/fg10.png" alt="Image 3" class="image3">
+    </div>
+
+    <div class="form-container">
+        <iframe 
+          src="https://docs.google.com/forms/d/e/1FAIpQLSdD7WXYEeOJvjL06K-lOU397cfN5J6xQWJcLyCEJA3xhJm5Fw/viewform?embedded=true" 
+          class="texty">Loading…</iframe>
+    </div>
+
+    <script>
+        const cloudImage = document.querySelector('.cloud');
+        const newdanImage = document.getElementById('newdan');
+
+        function updateOpacity(event) {
+            const mouseY = event.clientY;
+            const opacity = Math.max(0.1, (window.innerHeight - mouseY) / window.innerHeight * 0.9 + 0.1);
+            cloudImage.style.opacity = opacity;
+        }
+
+        function moveNewdan(event) {
+            const mouseX = event.clientX;
+            const windowWidth = window.innerWidth;
+            const offset = (mouseX / windowWidth - 0.5) * 15; 
+            newdanImage.style.transform = `translateX(calc(-50% + ${offset}px))`; 
+        }
+
+        document.addEventListener('mousemove', updateOpacity);
+        document.addEventListener('mousemove', moveNewdan);
+    </script>
+
+</body>
+</html>
